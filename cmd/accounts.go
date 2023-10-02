@@ -110,7 +110,7 @@ var accountsCmd = &cobra.Command{
 
 // Note: Some account subcommands are not defined in this file.
 var accountSubcommands = []*cobra.Command{
-	&cobra.Command{
+	{
 		Use: "show",
 		Long: `Displays the details about the requested account.
 If no account ID is specified, the current user account is used.`,
@@ -130,21 +130,21 @@ If no account ID is specified, the current user account is used.`,
 			return accountSubcommandsRunE(cmd.Name(), args)
 		},
 	},
-	&cobra.Command{
+	{
 		Use:   "followers",
 		Short: "Display the accounts following the specified account",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return accountSubcommandsRunE(cmd.Name(), args)
 		},
 	},
-	&cobra.Command{
+	{
 		Use:   "following",
 		Short: "Display the accounts followed by the specified account",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return accountSubcommandsRunE(cmd.Name(), args)
 		},
 	},
-	&cobra.Command{
+	{
 		Use:     "favourites",
 		Aliases: []string{"favorites", "favourited", "favorited"},
 		Short:   "Display the user's favourites",
@@ -152,7 +152,7 @@ If no account ID is specified, the current user account is used.`,
 			return accountSubcommandsRunE(cmd.Name(), args)
 		},
 	},
-	&cobra.Command{
+	{
 		Use:     "blocks",
 		Aliases: []string{"blocked"},
 		Short:   "Display the user's blocked accounts",
@@ -160,7 +160,7 @@ If no account ID is specified, the current user account is used.`,
 			return accountSubcommandsRunE(cmd.Name(), args)
 		},
 	},
-	&cobra.Command{
+	{
 		Use:     "mutes",
 		Aliases: []string{"muted"},
 		Short:   "Display the user's muted accounts",

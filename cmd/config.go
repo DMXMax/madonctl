@@ -38,7 +38,7 @@ func init() {
 }
 
 var configSubcommands = []*cobra.Command{
-	&cobra.Command{
+	{
 		Use:     "dump",
 		Short:   "Dump the configuration",
 		Example: `  madonctl config dump -i INSTANCE -L USERNAME -P PASS > config.yaml`,
@@ -46,7 +46,7 @@ var configSubcommands = []*cobra.Command{
 			return configDump(false)
 		},
 	},
-	&cobra.Command{
+	{
 		Use:     "whoami",
 		Aliases: []string{"token"},
 		Short:   "Display user token",
@@ -54,7 +54,7 @@ var configSubcommands = []*cobra.Command{
 			return configDisplayToken()
 		},
 	},
-	&cobra.Command{
+	{
 		Use: "themes",
 		//Aliases: []string{},
 		Short: "Display available themes",

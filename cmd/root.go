@@ -28,7 +28,8 @@ var gClient *madon.Client
 
 // Options
 var cfgFile string
-var safeMode bool
+
+// var safeMode bool
 var instanceURL, appID, appSecret string
 var login, password, token string
 var verbose bool

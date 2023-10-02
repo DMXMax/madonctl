@@ -39,14 +39,14 @@ func init() {
 }
 
 var oauth2Subcommands = []*cobra.Command{
-	&cobra.Command{
+	{
 		Use:   "get-url",
 		Short: "Get OAuth2 URL",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return oAuth2GetURL()
 		},
 	},
-	&cobra.Command{
+	{
 		Use:   "code CODE",
 		Short: "Log in with OAuth2 code",
 		RunE: func(cmd *cobra.Command, args []string) error {

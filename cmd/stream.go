@@ -190,7 +190,7 @@ LISTEN:
 	for {
 		select {
 		case v, ok := <-done:
-			if !ok || v == true { // done is closed, end of streaming
+			if !ok || v { // done is closed, end of streaming
 				break LISTEN
 			}
 		case ev := <-evChan:

@@ -102,9 +102,6 @@ func suggestionsGetRunE(cmd *cobra.Command, args []string) error {
 		errPrint("Error: %s", err.Error())
 		os.Exit(1)
 	}
-	if obj == nil {
-		return nil
-	}
 
 	p, err := getPrinter()
 	if err != nil {

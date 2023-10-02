@@ -6,7 +6,7 @@
 package cmd
 
 import (
-	"io/ioutil"
+	"io"
 	"os"
 	"strings"
 
@@ -96,7 +96,7 @@ var statusCmd = &cobra.Command{
 }
 
 var statusSubcommands = []*cobra.Command{
-	&cobra.Command{
+	{
 		Use:     "show",
 		Aliases: []string{"display"},
 		Short:   "Get the status",
@@ -104,28 +104,28 @@ var statusSubcommands = []*cobra.Command{
 			return statusSubcommandRunE(cmd.Name(), args)
 		},
 	},
-	&cobra.Command{
+	{
 		Use:   "context",
 		Short: "Get the status context",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return statusSubcommandRunE(cmd.Name(), args)
 		},
 	},
-	&cobra.Command{
+	{
 		Use:   "card",
 		Short: "Get the status card",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return statusSubcommandRunE(cmd.Name(), args)
 		},
 	},
-	&cobra.Command{
+	{
 		Use:   "reblogged-by",
 		Short: "Display accounts which reblogged the status",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return statusSubcommandRunE(cmd.Name(), args)
 		},
 	},
-	&cobra.Command{
+	{
 		Use:     "favourited-by",
 		Aliases: []string{"favorited-by"},
 		Short:   "Display accounts which favourited the status",
@@ -133,7 +133,7 @@ var statusSubcommands = []*cobra.Command{
 			return statusSubcommandRunE(cmd.Name(), args)
 		},
 	},
-	&cobra.Command{
+	{
 		Use:     "delete",
 		Aliases: []string{"rm"},
 		Short:   "Delete the status",
@@ -141,7 +141,7 @@ var statusSubcommands = []*cobra.Command{
 			return statusSubcommandRunE(cmd.Name(), args)
 		},
 	},
-	&cobra.Command{
+	{
 		Use:     "mute-conversation",
 		Aliases: []string{"mute"},
 		Short:   "Mute the conversation containing the status",
@@ -149,7 +149,7 @@ var statusSubcommands = []*cobra.Command{
 			return statusSubcommandRunE(cmd.Name(), args)
 		},
 	},
-	&cobra.Command{
+	{
 		Use:     "unmute-conversation",
 		Aliases: []string{"unmute"},
 		Short:   "Unmute the conversation containing the status",
@@ -325,13 +325,13 @@ func statusSubcommandRunE(subcmd string, args []string) error {
 		text := strings.Join(args, " ")
 		if opt.textFilePath != "" {
 			var b []byte
-			if b, err = ioutil.ReadFile(opt.textFilePath); err != nil {
+			if b, err = os.ReadFile(opt.textFilePath); err != nil {
 				break
 			}
 			text = string(b)
 		} else if opt.stdin {
 			var b []byte
-			if b, err = ioutil.ReadAll(os.Stdin); err != nil {
+			if b, err = io.ReadAll(os.Stdin); err != nil {
 				break
 			}
 			text = string(b)

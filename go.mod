@@ -1,7 +1,5 @@
 module github.com/McKael/madonctl
 
-replace github.com/McKael/madon/v3 => /Users/geniusmaximus/Documents/projects/fork/madon
-
 require (
 	github.com/McKael/madon/v3 v3.0.0-20230806150951-5ba59b7ca061
 	github.com/ghodss/yaml v1.0.0
